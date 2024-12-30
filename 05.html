@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濮院古镇现在的发展</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .control-btn {
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>濮院古镇现在的发展</h1>
+    <div class="carousel">
+        <img src="img/051.jpg" class="active" alt="濮院古镇图片1">
+        <img src="img/052.jpg" alt="濮院古镇图片2">
+        <img src="img/053.jpg" alt="濮院古镇图片3">
+    </div>
+    <div class="controls">
+        <i class="fas fa-arrow-left control-btn" id="prevBtn"></i>
+        <i class="fas fa-arrow-right control-btn" id="nextBtn"></i>
+    </div>
+    <div class="info">
+        <p>濮院古镇，位于中国浙江省桐乡市，是一座历史悠久的古镇。近年来，濮院古镇在保留传统风貌的同时，积极发展旅游业和文化产业，吸引了大量游客前来观光。通过不断改善基础设施和提升服务质量，濮院古镇已成为一个集文化、旅游、休闲为一体的现代化古镇。</p>
+        <p>此外，濮院古镇还注重传统手工艺的传承和发展，许多传统手工艺品已成为游客喜爱的纪念品。随着经济的发展，濮院古镇的未来将更加美好。</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let currentIndex = 0;
+        const images = $('.carousel img');
+        const totalImages = images.length;
+
+        $('#nextBtn').click(function() {
+            images.eq(currentIndex).removeClass('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images.eq(currentIndex).addClass('active');
+        });
+
+        $('#prevBtn').click(function() {
+            images.eq(currentIndex).removeClass('active');
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            images.eq(currentIndex).addClass('active');
+        });
+    });
+</script>
+
+</body>
+</html>

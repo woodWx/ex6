@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		body, html {
+					height: 100%;
+					margin: 0;
+					display: flex;
+					flex-direction: row;
+		.left-content {
+					flex: 1; /* 弹性布局，占据剩余空间的一部分 */
+					padding: 30px; /* 添加内边距以美化布局 */
+					margin: 30px;
+					box-sizing: border-box; /* 确保内边距不会增加容器宽度 */
+					border-right: 5px solid #d1c64d; /* 可选：添加右侧边框以分隔内容 */
+					font-size: 30px;
+					background-image: url("img/04背景图.jpg");
+					opacity: 0.7;
+				}
+		.cont{
+			width: 270px;
+			border:5px solid#d17708;
+			overflow: hidden;
+		}
+		.show{
+	
+			width: 270px;
+			height: 242px;
+			position: relative;
+		}
+		#img{
+			top:300px;
+			width: 290px;
+			height: 450px;
+			position: absolute;
+			top:500px;
+			transition: top 1s ease; /* 添加过渡效果 */
+		}
+		.wenzi{
+			margin-top: 250px;
+			width: 270px;
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 40px;
+		}
+		.hr{
+			top: 400px;
+			width: 80px;
+			margin: 20px auto;
+			border-color:#14324F;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			move();
+		};
+		function move(){
+			var img = document.getElementById('img');
+			img.style.top = '0px'; // 设置top值为0，触发过渡效果
+		}
+	</script>
+</head>
+<body>
+	<!-- 左侧内容容器 -->
+		<div class="left-content">
+			<p>明清时期，濮院成为蚕桑丝织区域商品经济中心
+			濮院汇集了潮玩市集、互动演出、非遗手作、时尚潮展等众多文旅新业态，游客漫步其间，与文创摊主交流，体验非遗传承的制作技艺，在一针一线、一笔一画间感受美好生活。
+			濮院从一座凝固的历史空间变成一个艺术时尚的互动平台，以新业态、新体验创造与众不同的古镇休闲游。如今，古镇之夜不再只有月色朦胧，河道边、树荫下，有桐乡说书、越剧等传统地方曲艺表演，也有流行乐队、民谣歌手的现场演出，古镇的夜晚突破了传统场景演出模式，打造出多元化的艺术展示平台。
+			小桥流水是江南小镇的共性，而文化则塑造了不同古镇的气质。时尚秀之于濮院，正如戏剧节之于乌镇。
+			濮院有着悠久的历史，以生产精美绝伦的“濮绸”名扬天下。元代，濮院种桑养蚕，发展丝绸业，形成最早的丝绸市场，历史上曾有“日出万匹绸、嘉禾一巨镇”的美誉。明清时期，濮院成为蚕桑丝织区域商品经济中心，是“天下第一绸”濮绸的故里，也是明清时期江南五大名镇之一。现在的濮院已经从“濮绸故里”发展成为“全国最大的羊毛衫集散中心”，并以创意为引领，大力发展时尚产业。</p>
+		</div>
+	<div class="cont">
+		<div class="show">
+			<img id="img" src="img/秋景濮院.jpg"> <!-- 确保图片路径正确 -->
+		</div>
+		<div class="wenzi">
+			濮院
+			<hr class="hr">
+			PU YUAN
+		</div>
+	</div>
+</body>
+</html>

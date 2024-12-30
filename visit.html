@@ -1,0 +1,224 @@
+<!DOCTYPE html>  
+
+	<html>  
+
+	<head>  
+
+	    <title>濮院八景</title>  
+
+	    <meta charset="utf-8" />  
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+	    <style type="text/css">  
+
+	        /* 公用样式 */  
+
+	        html, body {  
+
+	            background-image: url("img/background2.jpg");  
+
+	            background-repeat: no-repeat;  
+
+	            background-size: cover;  
+
+	            width: 100%;  
+
+	            height: 100%;  
+
+	            margin: 0px;  
+				
+			
+
+	        }  
+
+	  
+
+	        /* 导航菜单 */  
+
+	        .head {  
+
+	            background-color: #8BA23C;  
+
+	            width: 100%;  
+
+	            display: flex;  
+
+	            flex-direction: row; /* 横向排列 */  
+
+	            justify-content: center; /* 横向居中 */  
+
+	        }  
+
+	  
+
+	        .head div {  
+
+	            width: 200px;  
+
+	            line-height: 50px;  
+
+	            text-align: center;  
+
+	            color: #FFFFFF;  
+
+	        }  
+
+	  
+
+	        /* 正文内容 */  
+
+	        .content {  
+
+	            margin: 50px auto;  
+
+	            width: 80%;  
+
+	            height: 30%;  
+
+	            display: flex;  
+
+	            flex-direction: column; /* 竖向排列 */  
+
+	        }  
+
+	  
+
+	        .lines {  
+
+	            width: 100%;  
+
+	            flex-grow: 1; /* 三lines高度比例为：1:1:1，平分content高度 */  
+
+	            display: flex;  
+
+	            flex-direction: row; /* 横向排列 */  
+
+	        }  
+
+	  
+
+	        .lines div {  
+
+	            flex-grow: 1; /* lines中的3个div，宽度占比为：1:1:1，平分lines宽度 */  
+
+	            display: flex;  
+
+	            align-items: center;  
+
+	            justify-content: center;  
+
+	        }  
+
+	  
+
+	        .lines div img {  
+
+	            width: 80%;  
+
+	            height: 60%;  
+
+	            transition: transform 0.3s ease; /* 添加过渡效果 */  
+
+	        }  
+
+	  
+
+	        .zoomed {  
+
+	            transform: scale(1.2); /* 放大1.2倍 */  
+
+	        }
+        /* 回到首页按钮样式 */
+        .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #8BA23C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+ 
+        .back-to-home:hover {
+            background-color: #798E34;
+        }			  
+
+	    </style>  
+
+	</head>  
+
+	<body>  
+
+
+	<!-- 网页头-弹性布局 -->  
+
+	<div class="head">
+	     <div class="nav-item" data-target="0">北更楼</div>
+	        <div class="nav-item" data-target="1">翔云观</div>
+	        <div class="nav-item" data-target="2">濮院古桥群</div>
+	        <div class="nav-item" data-target="3">大有桥</div>
+	        <div class="nav-item" data-target="4">章宅</div>
+	        <div class="nav-item" data-target="5">漱芳禅园</div>
+	        <div class="nav-item" data-target="6">梅泾剧场</div>
+	        <div class="nav-item" data-target="7">濮驸马第</div>
+	</div>
+	<!-- 正文内容-弹性布局 -->  
+
+	<div class="content">
+	    <div class="lines">
+	        <div><img src="img/img1.jpg" class="zoomable" /></div>
+	        <div><img src="img/img2.jpg" class="zoomable" /></div>
+	        <div><img src="img/img3.jpg" class="zoomable" /></div>
+	        <div><img src="img/img4.jpg" class="zoomable" /></div>
+	    </div>
+	    <div class="lines">
+	        <div><img src="img/img5.jpg" class="zoomable" /></div>
+	        <div><img src="img/img6.jpg" class="zoomable" /></div>
+	        <div><img src="img/img7.jpg" class="zoomable" /></div>
+	        <div><img src="img/img8.jpg" class="zoomable" /></div>
+	    </div>
+	</div>
+
+<!-- 回到首页链接 -->
+    <a href="index.html" class="back-to-home">回到首页</a>
+	  
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+	    // 导航菜单鼠标移上效果
+	    $('.nav-item').mouseenter(function() {
+	        $(this).css('font-size', '1.2em'); // 增大字体
+	    }).mouseleave(function() {
+	        $(this).css('font-size', ''); // 恢复原始字体大小（由CSS样式控制）
+	    });
+	 
+	    // 图片放大效果
+	    $('.head div').click(function() {
+	        $('.zoomable').removeClass('zoomed');
+	        const targetIndex = $(this).data('target');
+	        $('.zoomable').eq(targetIndex).addClass('zoomed');
+	    });
+	 
+	    const images = $('.zoomable');
+	    images.on('mouseenter touchstart', function() {
+	        $(this).addClass('zoomed');
+	    }).on('mouseleave touchend touchmove', function(event) {
+	        if (event.type === 'touchmove') {
+	            const touchedElement = document.elementFromPoint(event.clientX, event.clientY);
+	            if (!$(touchedElement).closest('.zoomable').length) {
+	                $(this).removeClass('zoomed');
+	            }
+	        } else {
+	            $(this).removeClass('zoomed');
+	        }
+	    });
+	});
+	</script>
+	  
+
+	</body>  
+
+	</html>

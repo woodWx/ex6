@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 添加jQuery库 -->
+    <title>濮院GQ盛宴</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+ 
+        header {
+            background-color: #333;
+            color: white;
+            padding: 25px;
+            text-align: center;
+			font-size: 25px;
+        }
+		
+		header h1 {
+			margin: 0;
+		}
+		
+        main {
+            padding: 20px;
+        }
+ 
+        section {
+            margin-bottom: 20px;
+			font-size: 23px;
+        }
+		
+		main p {
+		    font-size: 20px;
+		}
+		
+		main section h2 {
+		    font-size: 30px;
+		}
+ 
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+ 
+        img.loaded {
+            opacity: 1;
+            transform: translateX(0);
+        }
+ 
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+		/*返回用超链接*/
+		.back-link {
+		    position: absolute; /* 使用绝对定位将其放置在右上角 */
+		    top: 25px; /* 根据需要调整顶部距离 */
+		    right: 20px; /* 根据需要调整右侧距离 */
+		    color: white; /* 与header文本颜色一致 */
+		    text-decoration: none; /* 去除下划线 */
+		    font-size: 18px; /* 根据需要调整字体大小 */
+		    padding: 5px 10px; /* 添加内边距以增加点击区域 */
+		    border-radius: 5px; /* 添加圆角 */
+		    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景色，与header背景形成对比 */
+		    transition: background-color 0.3s ease; /* 添加背景色过渡效果 */
+		}
+		 
+		.back-link:hover {
+		    background-color: rgba(0, 0, 0, 0.7); /* 鼠标悬停时改变背景色 */
+		}
+		.news-item {
+		    margin-bottom: 20px;
+		    padding: 10px;
+		    background-color: #fff;
+		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		 
+		.news-item h3 {
+		    margin-top: 0;
+			font-size: 25px;
+		}
+		 
+		.news-item img {
+		    max-width: 100%;
+		    height: auto;
+		    display: block;
+		    margin: 10px 0;
+		}
+	</style>
+</head>
+<body>
+    <header>
+        <h1>濮院GQ盛宴</h1>
+		<a href="index.html" class="back-link">返回</a>
+    </header>
+    <main>
+        <section>
+            <h2>活动介绍</h2>
+            <p>12月6-7日，由《智族GQ》主办的智族GQ年度人物盛典（MOTY）于浙江嘉兴濮院时尚古镇举行。这里齐聚唐风宋韵，以重现历史上“嘉禾巨镇，声闻四邦”的繁华盛景而闻名。今年的智族GQ年度人物盛典以“时间之外”为主题，寓意从忙碌的时间轴中抽离，步入宁静自洽的自我之境。各行各业的领军人物受邀出席，在安静的力量中返“濮”归真，探寻生活的松弛感，构建自然的真我本色。</p>
+            <img id="eventImg" src="img/GQ1.png" alt="GQ盛宴现场" onload="this.classList.add('loaded')">
+			<img id="eventImg" src="img/GQ2.png" alt="GQ盛宴现场" onload="this.classList.add('loaded')">
+			<img id="eventImg" src="img/GQ3.png" alt="GQ盛宴现场" onload="this.classList.add('loaded')">
+        </section>
+        <section>
+            <h2>亮点</h2>
+            <ul>
+                <li>顶级时尚品牌展示</li>
+                <li>明星红毯走秀</li>
+                <li>高端美食体验</li>
+                <li>艺术与时尚跨界展览</li>
+            </ul>
+        </section>
+		<section>
+		    <div class="news-item">
+		        <h3>特别嘉宾</h3>
+		        <p>本次盛宴邀请了众多时尚界、艺术界及娱乐界的知名人士，他们将共同见证这一时尚与艺术交融的盛事。</p>
+		        <img src="img/GQjiabing.png" alt="新闻报道图片1" onload="this.classList.add('loaded')">
+		    </div>
+		
+		</section>
+    </main>
+    <footer>
+        <p>&copy; 2023 濮院GQ盛宴</p>
+    </footer>
+	<script type="text/javascript">
+	        $(document).ready(function() {
+	            // 图片淡入效果
+	            $('#eventImg').on('load', function() {
+	                $(this).fadeIn(1000); // 使用jQuery的fadeIn方法实现淡入效果
+	            }).show(); // 首先显示图片，以便fadeIn可以正常工作
+	 
+	
+	            // 为页面添加平滑滚动功能（当点击内部链接时）
+	            $('a[href^="#"]').on('click', function(e) {
+	                e.preventDefault();
+	                $(document.body).animate({
+	                    scrollTop: $($.attr(this, 'href')).offset().top
+	                }, 1000);
+	            });
+	        });
+		</script>	
+</body>
+</html>

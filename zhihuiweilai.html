@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 添加jQuery库 -->
+    <title>濮院织绘未来时装周</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+ 
+        header {
+            background-color: #333;
+            color: white;
+            padding: 25px;
+            text-align: center;
+			font-size: 25px;
+        }
+		
+		header h1 {
+			margin: 0;
+		}
+		
+        main {
+            padding: 20px;
+        }
+ 
+        section {
+            margin-bottom: 20px;
+			font-size: 23px;
+        }
+		
+		main p {
+		    font-size: 20px;
+		}
+		
+		main section h2 {
+		    font-size: 30px;
+		}
+ 
+        img {
+            max-width: 70%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+ 
+        img.loaded {
+            opacity: 1;
+            transform: translateX(0);
+        }
+ 
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+ 
+        .news-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .news-item h3 {
+            margin-top: 0;
+			font-size: 25px;
+        }
+ 
+        .news-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+		
+		/*返回用超链接*/
+		.back-link {
+		    position: absolute; /* 使用绝对定位将其放置在右上角 */
+		    top: 25px; /* 根据需要调整顶部距离 */
+		    right: 20px; /* 根据需要调整右侧距离 */
+		    color: white; /* 与header文本颜色一致 */
+		    text-decoration: none; /* 去除下划线 */
+		    font-size: 18px; /* 根据需要调整字体大小 */
+		    padding: 5px 10px; /* 添加内边距以增加点击区域 */
+		    border-radius: 5px; /* 添加圆角 */
+		    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景色，与header背景形成对比 */
+		    transition: background-color 0.3s ease; /* 添加背景色过渡效果 */
+		}
+		 
+		.back-link:hover {
+		    background-color: rgba(0, 0, 0, 0.7); /* 鼠标悬停时改变背景色 */
+		}
+		
+    </style>
+</head>
+<body>
+    <header>
+        <h1>濮院织慧未来时装周</h1>
+		<a href="index.html" class="back-link">返回</a>
+    </header>
+    <main>
+        <section>
+            <h2>活动介绍</h2>
+            <p>4月24日，2024濮院时装周在濮院时尚古镇拉开帷幕，本届濮院时装周在延续「针织即时尚」核心理念的同时，提出了「织慧未来」的主题，结合时尚针织之美与江南水乡之韵，以濮院本土针织产业基因为引，将传统文化与现代潮流相结合，旨在彰显时尚产业和古镇旅游良性互动的格局，加速濮院时尚产业走向国际，推动本地针织产业中心转型，助力培植年轻设计师力量生长。</p>
+            <img id="eventImg" src="img/shizhuangzhouT.webp" alt="时装周现场" onload="this.classList.add('loaded')">
+        </section>
+        <section>
+            <h2>亮点</h2>
+            <ul>
+                <li>重量级设计师作品展示</li>
+                <li>专业时尚大秀和设计师品牌街秀</li>
+                <li>全天候的手工坊、艺术家展览</li>
+            </ul>
+        </section>
+        <section>
+            <h2>新闻报道</h2>
+            <div class="news-item">
+                <h3>濮院时装周盛大开幕，时尚界聚焦</h3>
+                <p>2024年4月20日，濮院时装周在万众瞩目中拉开帷幕，来自国内外的时尚界人士齐聚一堂，共同见证这一时尚盛事。</p>
+                <img src="img/shizhuangzhoukaimu.jpeg" alt="新闻报道图片1" onload="this.classList.add('loaded')">
+            </div>
+            <div class="news-item">
+                <h3>设计师作品惊艳亮相，引领时尚潮流</h3>
+                <p>本次时装周上，多位知名设计师带来了他们的最新作品，这些作品不仅展现了设计师们的创意才华，也引领了未来的时尚潮流。</p>
+                <img src="img/shizhuangzhoudaxiu.jpeg" alt="新闻报道图片2" onload="this.classList.add('loaded')">
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 濮院时装周</p>
+    </footer>
+	<script type="text/javascript">
+	        $(document).ready(function() {
+	            // 图片淡入效果
+	            $('#eventImg').on('load', function() {
+	                $(this).fadeIn(1000); // 使用jQuery的fadeIn方法实现淡入效果
+	            }).show(); // 首先显示图片，以便fadeIn可以正常工作
+	 
+
+	            // 为页面添加平滑滚动功能（当点击内部链接时）
+	            $('a[href^="#"]').on('click', function(e) {
+	                e.preventDefault();
+	                $(document.body).animate({
+	                    scrollTop: $($.attr(this, 'href')).offset().top
+	                }, 1000);
+	            });
+	        });
+		</script>	
+</body>
+</html>
